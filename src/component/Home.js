@@ -7,7 +7,7 @@ import PostDetail from './PostDetail';
 class Home extends React.Component {
     render(){
         const {match} = this.props;
-        console.log(match)
+        // console.log(match)
         return(
             <div>
                 <Header></Header>

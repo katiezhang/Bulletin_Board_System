@@ -15,13 +15,13 @@ class Login extends React.Component {
     }
 
     handleChange = (e) => {
-        switch (e.target.name){
+        switch (e.target.name) {
             case 'username':
                 this.setState({
                     username: e.target.value
                 });
                 break;
-            case 'password': 
+            case 'password':
                 this.setState({
                     password: e.target.value
                 });
@@ -31,10 +31,10 @@ class Login extends React.Component {
         }
     }
 
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
         e.preventDefault();
-        const { username, password} = this.state;
-        if(!username || !password){
+        const { username, password } = this.state;
+        if (!username || !password) {
             alert('User name or Password can not be empty!');
             return;
         }
@@ -43,23 +43,24 @@ class Login extends React.Component {
             password: password
         }
         post(login, data).then(response => {
-            if(response.error){
+            if (response.error) {
                 alert(response.error.message || 'Login failed.')
-            }else{
-                sessionStorage.setItem('unsername', username);
-                sessionStorage.setItem('userId ', response.userId);
+            } else {
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("userId", response.userId);
+                console.log('handleSubmit sessionStorage ', sessionStorage.getItem('userId'))
                 this.setState({
                     redirectToReferer: true
                 })
             }
         });
-        
+
     }
 
     render() {
         const { redirectToReferer } = this.state;
         const from = '/';
-        if (redirectToReferer){
+        if (redirectToReferer) {
             return <Redirect to={from} />
         }
         return (
