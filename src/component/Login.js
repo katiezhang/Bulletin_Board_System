@@ -48,18 +48,16 @@ class Login extends React.Component {
             } else {
                 sessionStorage.setItem("username", username);
                 sessionStorage.setItem("userId", response.userId);
-                console.log('handleSubmit sessionStorage ', sessionStorage.getItem('userId'))
                 this.setState({
                     redirectToReferer: true
                 })
             }
         });
-
     }
 
     render() {
         const { redirectToReferer } = this.state;
-        const from = '/';
+        const { from } = this.props.location.state;
         if (redirectToReferer) {
             return <Redirect to={from} />
         }

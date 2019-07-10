@@ -21,18 +21,16 @@ class Header extends React.Component{
     }
     render(){
         const { userId, username} = this.state;
-        // const userId = sessionStorage.getItem("userId");
-        // const username = sessionStorage.getItem("username");
-        console.log('userId', userId)
+        const { location } = this.props;
+        const loginLocation = { pathname: '/login', state: { from: location } };
         return(
             <div className="header">
                 <Link to={'/'} className="home">Home</Link>
                 {userId 
                 ? 
-                    <div className="user"><lable>{`User: ${username}`}</lable><button onClick={this.handleLogOut}>Log out</button></div> 
+                    <div className="user"><label>{`User: ${username}`}</label><button onClick={this.handleLogOut}>Log out</button></div> 
                 : 
-                <Link to={'/login'} className="login">Login</Link>}
-                
+                    <Link to={loginLocation} className="login">Login</Link>}
             </div>
         )
     }
