@@ -1,0 +1,22 @@
+.post-item{
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    h4{
+        font-size: 1.2rem;
+        margin: 5px auto;
+        font-family: cursive;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.author,
+.date{
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+    margin-right: 20px;
+    color: #005e55;
+    font-family: cursive;
+}
